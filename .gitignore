@@ -8,3 +8,5 @@
 /build
 /captures
 .externalNativeBuild
+
+lets say this is a invalid change, trying to merge without getting errors 
