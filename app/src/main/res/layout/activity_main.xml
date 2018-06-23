@@ -2,34 +2,35 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="10dp"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <TextView
-        android:textSize="16sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
+        android:text="Quantity"
         android:textAllCaps="true"
-        android:text="Quantity" />
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/textViewQuantity"
-        android:text="0"
-        android:textSize="16sp"
-        android:textColor="@android:color/black"
-        android:layout_margin="10dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="0"
+        android:textColor="@android:color/black"
+        android:textSize="16sp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
+        android:text="order"
         android:textSize="16sp"
-        android:text="order" />
+        android:onClick="submit" />
 
 </LinearLayout>
