@@ -25,12 +25,29 @@
         android:textColor="@android:color/black"
         android:textSize="16sp" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Price"
+        android:textAllCaps="true"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/textViewPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="$0"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"/>
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
+        android:onClick="submit"
         android:text="order"
-        android:textSize="16sp"
-        android:onClick="submit" />
+        android:textSize="16sp" />
 
 </LinearLayout>
