@@ -5,11 +5,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
+import java.text.NumberFormat;
 
 public class MainActivity extends AppCompatActivity {
 
     TextView textViewQuantity;
+    TextView textViewPrice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,13 +18,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         textViewQuantity = (TextView) findViewById(R.id.textViewQuantity);
+        textViewPrice = (TextView) findViewById(R.id.textViewPrice);
     }
 
     public void submit(View view){
         display(1);
+        displayPrice(10);
     }
 
     public void display(int nr){
         textViewQuantity.setText("" + nr);
+    }
+
+    public void displayPrice(int nr) {
+        textViewPrice.setText(NumberFormat.getCurrencyInstance().format(nr));
     }
 }
