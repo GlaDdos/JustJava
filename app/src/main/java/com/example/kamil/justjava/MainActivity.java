@@ -12,6 +12,9 @@ public class MainActivity extends AppCompatActivity {
     TextView textViewQuantity;
     TextView textViewPrice;
 
+    int price;
+    int quantity;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,18 +22,35 @@ public class MainActivity extends AppCompatActivity {
 
         textViewQuantity = (TextView) findViewById(R.id.textViewQuantity);
         textViewPrice = (TextView) findViewById(R.id.textViewPrice);
+        quantity = 0;
+        price = 7;
     }
 
     public void submit(View view){
-        display(1);
-        displayPrice(10);
+        displayPrice();
     }
 
     public void display(int nr){
         textViewQuantity.setText("" + nr);
     }
 
-    public void displayPrice(int nr) {
-        textViewPrice.setText(NumberFormat.getCurrencyInstance().format(nr));
+    public void displayPrice() {
+        int check = quantity * price;
+        textViewPrice.setText(NumberFormat.getCurrencyInstance().format(check));
+    }
+
+    public void increment(View view) {
+        quantity++;
+        display(quantity);
+    }
+
+    public void decrement(View view){
+        quantity--;
+
+        if(quantity < 0){
+            quantity = 0;
+        }
+
+        display(quantity);
     }
 }
