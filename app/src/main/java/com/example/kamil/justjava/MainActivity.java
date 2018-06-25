@@ -10,7 +10,7 @@ import java.text.NumberFormat;
 public class MainActivity extends AppCompatActivity {
 
     TextView textViewQuantity;
-    TextView textViewPrice;
+    TextView textViewOrderSummary;
 
     final int price = 5;
     int quantity;
@@ -21,12 +21,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         textViewQuantity = (TextView) findViewById(R.id.textViewQuantity);
-        textViewPrice = (TextView) findViewById(R.id.textViewPrice);
+        textViewOrderSummary = (TextView) findViewById(R.id.textViewOrderSummary);
         quantity = 0;
     }
 
     public void submit(View view){
-        displayPrice(calculatePrice(quantity, price));
+        displayOrder(calculatePrice(quantity, price));
     }
 
     public void displayQuantity(int nr){
@@ -37,8 +37,8 @@ public class MainActivity extends AppCompatActivity {
         return quantity * price;
     }
 
-    public void displayPrice(int price) {
-        textViewPrice.setText(NumberFormat.getCurrencyInstance().format(price));
+    public void displayOrder(int price) {
+        textViewOrderSummary.setText(createOrderSummary(price));
     }
 
     public void increment(View view) {
@@ -54,5 +54,17 @@ public class MainActivity extends AppCompatActivity {
         }
 
         displayQuantity(quantity);
+    }
+
+    public String createOrderSummary(int price) {
+
+        StringBuilder summary =  new StringBuilder();
+        summary.append("Name: " + "\n");
+        summary.append("Quantity: " + quantity + "\n");
+        summary.append("Total: " + NumberFormat.getCurrencyInstance().format(price) + "\n");
+        summary.append("Thank tou!");
+
+        return summary.toString();
+
     }
 }
