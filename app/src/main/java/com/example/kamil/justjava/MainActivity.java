@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.text.NumberFormat;
@@ -13,10 +14,15 @@ public class MainActivity extends AppCompatActivity {
     TextView textViewQuantity;
     TextView textViewOrderSummary;
 
+    EditText editTextName;
+
     CheckBox checkBoxWhipped;
     CheckBox checkBoxChocolate;
 
-    final int price = 5;
+    final int coffeePrice = 5;
+    final int creamPrice = 2;
+    final int chocolatePrice = 1;
+
     int quantity;
 
     @Override
@@ -27,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
         textViewQuantity = (TextView) findViewById(R.id.textViewQuantity);
         textViewOrderSummary = (TextView) findViewById(R.id.textViewOrderSummary);
 
+        editTextName = (EditText) findViewById(R.id.editTextName);
+
         checkBoxWhipped = (CheckBox) findViewById(R.id.checkBoxWhipped);
         checkBoxChocolate = (CheckBox) findViewById(R.id.checkBoxChocolate);
 
@@ -34,15 +42,26 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void submit(View view){
-        displayOrder(calculatePrice(quantity, price));
+        displayOrder(calculatePrice(quantity, coffeePrice));
     }
 
     public void displayQuantity(int nr){
         textViewQuantity.setText("" + nr);
     }
 
-    public int calculatePrice(int quantity, int price) {
-        return quantity * price;
+    public int calculatePrice(int quantity, int coffeePrice) {
+
+        int singleOrderPrice = coffeePrice;
+
+        if(checkBoxChocolate.isChecked()) {
+            singleOrderPrice += chocolatePrice;
+        }
+
+        if(checkBoxWhipped.isChecked()){
+            singleOrderPrice += creamPrice;
+        }
+
+        return quantity * singleOrderPrice;
     }
 
     public void displayOrder(int price) {
@@ -67,7 +86,8 @@ public class MainActivity extends AppCompatActivity {
     public String createOrderSummary(int price) {
 
         StringBuilder summary =  new StringBuilder();
-        summary.append("Name: " + "\n");
+
+        summary.append("Name: " + editTextName.getText() + "\n");
         summary.append("Quantity: " + quantity + "\n");
 
         if(checkBoxWhipped.isChecked()){
