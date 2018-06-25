@@ -3,6 +3,7 @@ package com.example.kamil.justjava;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import java.text.NumberFormat;
@@ -11,6 +12,9 @@ public class MainActivity extends AppCompatActivity {
 
     TextView textViewQuantity;
     TextView textViewOrderSummary;
+
+    CheckBox checkBoxWhipped;
+    CheckBox checkBoxChocolate;
 
     final int price = 5;
     int quantity;
@@ -22,6 +26,10 @@ public class MainActivity extends AppCompatActivity {
 
         textViewQuantity = (TextView) findViewById(R.id.textViewQuantity);
         textViewOrderSummary = (TextView) findViewById(R.id.textViewOrderSummary);
+
+        checkBoxWhipped = (CheckBox) findViewById(R.id.checkBoxWhipped);
+        checkBoxChocolate = (CheckBox) findViewById(R.id.checkBoxChocolate);
+
         quantity = 0;
     }
 
@@ -61,8 +69,17 @@ public class MainActivity extends AppCompatActivity {
         StringBuilder summary =  new StringBuilder();
         summary.append("Name: " + "\n");
         summary.append("Quantity: " + quantity + "\n");
+
+        if(checkBoxWhipped.isChecked()){
+            summary.append("Whipped cream" + "\n");
+        }
+
+        if(checkBoxChocolate.isChecked()){
+            summary.append("Chocolate" + "\n");
+        }
+
         summary.append("Total: " + NumberFormat.getCurrencyInstance().format(price) + "\n");
-        summary.append("Thank tou!");
+        summary.append("\nThank you!");
 
         return summary.toString();
 
